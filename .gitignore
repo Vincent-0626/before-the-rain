@@ -1,0 +1,7 @@
+*.tar.gz
+node_modules/
+__pycache__/
+.env
+.env.*
+models/
+*.gguf

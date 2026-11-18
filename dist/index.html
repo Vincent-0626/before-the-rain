@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="一个发生在雨天书店的中文互动恋爱短篇。">
+  <meta name="theme-color" content="#f5f0e9">
+  <title>雨停之前 · 互动恋爱短篇</title>
+  <link rel="stylesheet" href="./style.css?v=5">
+  <script src="./lore.js?v=5" defer></script>
+  <script src="./story.js?v=6" defer></script>
+  <script src="./model.js?v=7" defer></script>
+  <script src="./app.js?v=5" defer></script>
+</head>
+<body>
+  <header class="masthead">
+    <a class="brand" href="#story" aria-label="雨停之前">
+      <span class="brand-mark" aria-hidden="true">❦</span>
+      <span class="brand-title">雨停之前<small>BEFORE THE RAIN STOPS</small></span>
+    </a>
+    <div class="tools">
+      <button id="journal-open" class="quiet-button" type="button">剧情手记</button>
+      <button id="restart" class="quiet-button restart" type="button"><span aria-hidden="true">↺</span> 重新开始</button>
+    </div>
+  </header>
+  <main id="story" class="story-layout">
+    <aside class="scene" aria-labelledby="scene-title">
+      <div class="scene-copy">
+        <p class="scene-kicker"><span></span><span id="scene-kicker">初遇 · 傍晚书店</span></p>
+        <h1 id="scene-title">雨停之前</h1>
+        <p id="scene-description">傍晚的骤雨把你留在一家旧书店。靠窗的人把包挪到脚边，为你空出一个位置。</p>
+      </div>
+    </aside>
+    <section class="conversation" aria-label="与林知秋的对话">
+      <header class="conversation-header">
+        <div class="character">
+          <button id="profile-open" class="avatar" type="button" aria-label="查看林知秋的角色档案">林</button>
+          <div><h2>林知秋</h2><button id="profile-label" class="text-button" type="button">26 岁 · 角色档案 ›</button></div>
+        </div>
+        <ol class="stages" aria-label="剧情进度">
+          <li data-stage="0" aria-current="step">初遇</li>
+          <li data-stage="1">熟悉</li>
+          <li data-stage="2">约定</li>
+        </ol>
+      </header>
+      <div class="messages" id="messages" role="log" aria-label="聊天记录" aria-live="polite" tabindex="0">
+        <p class="location">周五傍晚 · 梧桐书店</p>
+      </div>
+      <div class="conversation-footer">
+        <div id="choices" class="choices" aria-label="回复选项"></div>
+        <form id="composer" class="composer">
+          <label class="sr-only" for="message">你想说什么</label>
+          <input id="message" name="message" placeholder="说点什么，故事由你接下去…" maxlength="200" autocomplete="off" required>
+          <button id="send" type="submit" class="primary-button">发送 <span aria-hidden="true">↑</span></button>
+        </form>
+        <div class="footer-meta">
+          <p id="status" class="status" aria-live="polite">剧本模式 · 记录保存在本地</p>
+          <button id="mode" class="quiet-button mode-button" type="button">开启 AI 自由对话</button>
+        </div>
+      </div>
+    </section>
+  </main>
+  <dialog id="profile" aria-labelledby="profile-title">
+    <div class="dialog-heading">
+      <div><p class="eyebrow">角色档案</p><h2 id="profile-title">林知秋</h2></div>
+      <form method="dialog"><button class="quiet-button">关闭</button></form>
+    </div>
+    <dl id="profile-facts" class="facts"></dl>
+    <section class="lore-section" aria-labelledby="lore-title">
+      <h3 id="lore-title">聊出来的背景</h3>
+      <p id="lore-empty">林知秋讲过的新经历会记在这里。</p>
+      <dl id="profile-lore" class="facts"></dl>
+    </section>
+  </dialog>
+  <dialog id="cloud-dialog" aria-labelledby="cloud-title">
+    <div class="dialog-heading">
+      <div><p class="eyebrow">AI 自由对话</p><h2 id="cloud-title">把话题聊开</h2></div>
+      <form method="dialog"><button class="quiet-button">关闭</button></form>
+    </div>
+    <p>启用后，每次生成回复会把当前消息、最近 8 轮对话、剧情手记和角色档案发给 Puter 上的通义千问。调用使用你的 Puter 额度。你可以随时切回剧本模式。</p>
+    <p id="cloud-error" role="status"></p>
+    <button id="cloud-connect" type="button" class="primary-button" disabled>授权并启用</button>
+  </dialog>
+  <dialog id="journal" aria-labelledby="journal-title">
+    <div class="dialog-heading">
+      <div><p class="eyebrow">这一页故事</p><h2 id="journal-title">剧情手记</h2></div>
+      <form method="dialog"><button type="submit" class="quiet-button" aria-label="关闭手记">关闭</button></form>
+    </div>
+    <p id="journal-summary"></p>
+    <dl id="memory"></dl>
+  </dialog>
+  <dialog id="restart-confirm" aria-labelledby="restart-title">
+    <h2 id="restart-title">重新开始故事？</h2>
+    <p>本次对话、剧情手记和聊出来的背景会清空。</p>
+    <form method="dialog" class="dialog-actions">
+      <button value="cancel" class="quiet-button" autofocus>取消</button>
+      <button value="restart" class="primary-button">重新开始</button>
+    </form>
+  </dialog>
+  <noscript>请启用 JavaScript 以开始故事。</noscript>
+</body>
+</html>
